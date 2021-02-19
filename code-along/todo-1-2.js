@@ -2,6 +2,8 @@
 // firebase.auth().onAuthStateChanged and move code that 
 // shows login UI to only show when signed out
 
+//test change
+
 firebase.auth().onAuthStateChanged(async function(user) {
   
   if (user) {
