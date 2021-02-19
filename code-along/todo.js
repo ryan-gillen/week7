@@ -1,8 +1,10 @@
 // Step 2: Change main event listener from DOMContentLoaded to 
 // firebase.auth().onAuthStateChanged and move code that 
 // shows login UI to only show when signed out
-document.addEventListener('DOMContentLoaded', async function(event) {
-  
+
+
+//document.addEventListener('DOMContentLoaded', async function(event) {
+firebase.auth().onAuthStateChange(async function(user)) {  
   let db = firebase.firestore()
 
   document.querySelector('form').addEventListener('submit', async function(event) {
@@ -58,19 +60,19 @@ document.addEventListener('DOMContentLoaded', async function(event) {
   }
 
   // Step 1: Un-comment to add FirebaseUI Auth
-  // // Initializes FirebaseUI Auth
-  // let ui = new firebaseui.auth.AuthUI(firebase.auth())
+  // Initializes FirebaseUI Auth
+  let ui = new firebaseui.auth.AuthUI(firebase.auth())
 
-  // // FirebaseUI configuration
-  // let authUIConfig = {
-  //   signInOptions: [
-  //     firebase.auth.EmailAuthProvider.PROVIDER_ID
-  //   ],
-  //   signInSuccessUrl: 'todo.html'
-  // }
+  // FirebaseUI configuration
+  let authUIConfig = {
+    signInOptions: [
+      firebase.auth.EmailAuthProvider.PROVIDER_ID
+    ],
+    signInSuccessUrl: 'todo.html'
+  }
 
-  // // Starts FirebaseUI Auth
-  // ui.start('.sign-in-or-sign-out', authUIConfig)
+  // Starts FirebaseUI Auth
+  ui.start('.sign-in-or-sign-out', authUIConfig)
 })
 
 // Step 3: Hide the form when signed-out
