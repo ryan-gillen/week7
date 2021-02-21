@@ -1,5 +1,6 @@
 let db = firebase.firestore()
 
+//
 // Change main event listener from DOMContentLoaded to 
 // firebase.auth().onAuthStateChanged and move code that 
 // shows login UI to only show when signed out
